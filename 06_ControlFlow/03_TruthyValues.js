@@ -1,3 +1,4 @@
+/*
 const userEmail = "aniket@gmail.com" // truthy values
 
 if(userEmail){
@@ -13,9 +14,16 @@ if(userEmail1){
 }else{
     console.log("Don't have user email");
 }
-
+*/
 /*
 +++++++++++++++++ Truthy Values 
+
+"0"
+'false'
+" " //space in string
+ []
+ {}
+ function(){} //empty function
 
 */
 
@@ -25,6 +33,16 @@ if(userEmail1){
 false
 0
 -0
-BIgInt
+BIgInt 0n
+""
+null
+undefined
+NaN
 
+*/
+/*
+const emptyObj = {}
+if(Object.keys(emptyObj).length === 0){
+    console.log("Object is empty");
+}
 */

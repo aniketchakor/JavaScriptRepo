@@ -86,3 +86,26 @@ if(userLoggedIn && debitCard && otpVerified || creditCard ){
 }else{
     console.log("OTP not verified");
 }
+
+// Nullish coalescing operator (??) : null undefined
+
+let val1;
+// val1 = 12 ?? 10
+val1 = null ?? 10 
+
+// for safety check if from database we are getting undefined or null values then it 
+// disturb the execution flow so for that Nullish operator is used to say that if value getting from database 
+// is null then print the value after ?? that not disturb the flow
+
+val1 = undefined ?? 10 
+console.log(val1);
+
+
+// Ternary Operator
+
+//condition ? true : false
+
+
+const bookPrice = 500;
+bookPrice >= 400 ? console.log("Price of the book is greater than 400"): console.log("less than 500");;
+
