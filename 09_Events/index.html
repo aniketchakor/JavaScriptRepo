@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+//    document.getElementById('oel').onClick = function(){
+//     alert("Owl clicked")
+//    }
+
+// attachEvent() -- used in Internet explorer ..not used now
+// jquery - On
+
+// type, timestamp, defaultPrevented, target, toElement, srcElement, currentTarget
+// clientX, clientY, scrrenX, screenY, altKey, ctrlK, shiftkey, keyCode, ----- need to check on google 
+
+
+document.getElementById('owl').addEventListener("click", (e)=>{
+    // alert("owl Clicked")
+    console.log(e);
+}, false)
+//third parameter 'false' default false but in some case need to write
+
+
+// event Propogation
+//1. event bubbling -- by default used (third paramenter false and true)
+//2. event capturing
+
+/*
+// bubbling --- bubbling up... from bottom to up track like inside to outside when third parameter is false
+
+document.getElementById('owl').addEventListener("click", (e)=>{
+    // alert("owl Clicked")
+    console.log("owl clicked");
+}, false)
+
+document.getElementById('images').addEventListener("click", (e)=>{
+    // alert("owl Clicked")
+    console.log("clicked inside the ul");
+}, false)
+
+*/
+
+
+//2. event capturing
+
+/*
+// if we changed third parameter from false to true then event capturin is happend like top to
+//bottom approach like 
+
+document.getElementById('owl').addEventListener("click", (e)=>{
+    // alert("owl Clicked")
+    console.log("owl clicked");
+}, true)
+
+document.getElementById('images').addEventListener("click", (e)=>{
+    // alert("owl Clicked")
+    console.log("clicked inside the ul");
+}, true)
+
+*/
+
+/*
+// if we used don't want to perform bubbling like when we clicked inside any image then it will show only specific 
+// click on image then we pass stop  propogation
+
+document.getElementById('owl').addEventListener("click", (e)=>{
+    // alert("owl Clicked")
+    console.log("owl clicked ");
+    e.stopPropagation() // avoid bubbling
+
+}, false)
+*/
+
+/*
+// Prevent default ------------
+
+document.getElementById('google').addEventListener('click', (e)=>{
+    e.preventDefault() // it stop the direction means preventing the default behaviour after click on 
+                       // google click to redirect to page
+    
+    e.stopPropagation() // stop bubbling
+    console.log("google clicked");
+}, false)
+
+*/
+
+// ------------after click remove specific image task---------
+
+document.querySelector('#images').addEventListener('click', (e)=>{
+    // console.log(e.target.parentNode);
+    // let removeIt = e.target.parentNode;
+    // removeIt.remove();
+    // OR
+    // removeIt.parentNode.removeChild(removeIt)
+
+    // Or
+
+    console.log(e.target.tagName);
+    if(e.target.tagName === "IMG"){
+        console.log(e.target.id);
+        let removeIt = e.target.parentNode
+        removeIt.remove()
+    }
+}, false)
+</script>
+</html>
