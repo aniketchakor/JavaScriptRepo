@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closures</title>
+  </head>
+  <body>
+
+    <button id="orange">Orange</button>
+    <button id="green">green</button>
+
+    <script>
+        /*
+        document.getElementById("orange").onclick = function(){
+            document.body.style.backgroundColor = "orange"
+        }
+        document.getElementById("green").onclick = function(){
+            document.body.style.backgroundColor = "green"
+        }
+ // to avoid duplication go with closure
+        */
+
+        function clickHandler(color){
+           return function(){
+                document.body.style.backgroundColor = `${color}`
+            }
+        }
+
+        document.getElementById('orange').onclick = clickHandler('orange')
+        document.getElementById('green').onclick = clickHandler('green')
+        
+
+    </script>
+    <script>
+      //   function init() {
+      //     let name = "Mozilla";
+      //     function displayName() {
+      //       console.log(name);
+      //     }
+      //     displayName();
+      //   }
+      //   init();
+      /*
+      init() creates a local variable called name and a function called displayName(). The displayName() function is an
+       inner function that is defined inside init() and is available only within the body of the init() function. Note that the displayName() function has no local variables of its own. However, since inner functions have access to the variables of outer functions, displayName() can access the variable name declared in the parent function, init().
+      */
+
+      // siblings cannot share anything
+      // only child function can get values from parent
+      // but parant cannot get values from child
+
+      /* lexical scoping
+
+      function outer() {
+        let username = "Aniket";
+        console.log("parent email", email);
+        function inner() {
+            let email = "utkarsha@gmail.com"
+          console.log("inner ", username);
+        }
+        function innertwo(){
+            console.log("innertwo ", username);
+            console.log(email);
+        }
+        inner();
+        innertwo();
+      }
+      outer();
+      console.log("extreme outer", username); //Uncaught ReferenceError: username is not defined
+   */
+
+      /*Closures++++*/
+      /*
+      function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+          console.log(name);
+        }
+        return displayName;
+      }
+
+      const myFunc = makeFunc();
+      myFunc();
+      */
+
+
+    </script>
+  </body>
+</html>
