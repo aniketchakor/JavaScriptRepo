@@ -1,7 +1,7 @@
 function SetUserName(username){
     // Complex DB Calls
-    this.username = username
-    console.log("Called");
+    this.username = username;
+   
 }
 
 function createUser(username, email, password){
